@@ -13,6 +13,8 @@ class MainActivityViewModel : ViewModel() {
         }
     var newComment = ""
 
+    val maxLikes = 100
+
     private var _postAComment = MutableLiveData(false)
     val postAComment: LiveData<Boolean>
         get() {
@@ -28,8 +30,10 @@ class MainActivityViewModel : ViewModel() {
     fun onLike() {
         val customer = _customerLiveData.value
         customer?.apply {
-            val customerLike = copy(likes = likes + 1)
-            _customerLiveData.value = customerLike
+            if (likes < maxLikes) {
+                val customerLike = copy(likes = likes + 1)
+                _customerLiveData.value = customerLike
+            }
         }
     }
 
