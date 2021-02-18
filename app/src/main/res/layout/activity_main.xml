@@ -88,6 +88,7 @@
             android:text="@{Integer.toString(viewmodel.customerLiveData.likes)}"
             android:textSize="18sp"
             android:textStyle="bold"
+            app:hotCustomer="@{viewmodel.customerLiveData.likes}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.93"
             app:layout_constraintStart_toStartOf="parent"
