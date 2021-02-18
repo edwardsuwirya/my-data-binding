@@ -12,6 +12,15 @@ class MainActivityViewModel : ViewModel() {
         }
 
     init {
-        _customerLiveData.value = Customer("Jution", "Lampung")
+        _customerLiveData.value = Customer("Jution", "Lampung", 0)
     }
+
+    fun onLike() {
+        val customer = _customerLiveData.value
+        customer?.apply {
+            val customerLike = copy(likes = likes + 1)
+            _customerLiveData.value = customerLike
+        }
+    }
+
 }
