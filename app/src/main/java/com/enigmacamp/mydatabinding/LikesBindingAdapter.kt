@@ -10,12 +10,16 @@ object LikesBindingAdapter {
     @JvmStatic
     fun setHotCustomer(textView: TextView, totalLikes: Int, maxLikes: Int) {
         if (totalLikes < maxLikes) {
-            if (totalLikes in 0..10) {
-                textView.setTextColor(Color.parseColor("#000000"))
-            } else if (totalLikes in 11..50) {
-                textView.setTextColor(Color.parseColor("#F6AB49"))
-            } else {
-                textView.setTextColor(Color.parseColor("#D71E3E"))
+            when (totalLikes) {
+                in 0..10 -> {
+                    textView.setTextColor(Color.parseColor("#000000"))
+                }
+                in 11..50 -> {
+                    textView.setTextColor(Color.parseColor("#F6AB49"))
+                }
+                else -> {
+                    textView.setTextColor(Color.parseColor("#D71E3E"))
+                }
             }
         } else {
             Toast.makeText(textView.context, "Maximum likes", Toast.LENGTH_SHORT).show()
